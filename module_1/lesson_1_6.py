@@ -1,0 +1,15 @@
+my_dict = {'Max':1989, 'Pete':1992, 'Andrew': 1978}
+print(my_dict)
+print(my_dict['Pete'])
+print(my_dict.get('Ann','Is absent'))
+my_dict.update({'Ann':1998, 'Kate':1997})
+Trash = my_dict.pop('Max')
+print(Trash)
+print(my_dict)
+print()
+my_set = {1,2,3,2,1,'top','bottom','top',True}
+print(my_set)
+my_set.add(6)
+my_set.add('left')
+my_set.discard(1)
+print(my_set)
