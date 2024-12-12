@@ -2,14 +2,14 @@ class Figure:
     sides_count = 0
 
     def __init__(self, __color, *__sides):
-        if isinstance(__sides, tuple):
-            self.__sides = __sides
-        else:
-            print('неверное число сторон')
         if isinstance(__color, tuple):
-            self.__color = __color
+            self.__color = list(__color)
         else:
             print('неверно указан цвет')
+        if isinstance(__sides, tuple):
+            self.__sides = list(__sides)
+        else:
+            print('неверное число сторон')
         self.filled = False # атрибут закрашивания
 
     def get_color(self):
@@ -61,7 +61,7 @@ class Circle(Figure):
     def __init__(self, __color, *__sides):
         if len(__sides) == self.sides_count:
             super().__init__(__color, *__sides)
-            self.__radius = self.__sides[0] / (2 * 3.14)
+            self.__radius = __sides[0] / (2 * 3.14)
 
     def get_square(self):
         return 3.14 * self.__radius**2
@@ -78,15 +78,18 @@ class Triangle(Figure):
 
 
 class Cube(Figure):
-    ides_count = 12
+    sides_count = 12
 
     def __init__(self,  __color, *__sides):
         super().__init__(__color, *__sides)
+        self.__sides = []
+        for i in range(self.sides_count):
+            self.__sides.append(__sides[0])
 
     def get_volume(self):
         return self.__sides[1] * self.__sides[2] * self.__sides[3]
 
-
+print(dir(Figure))
 circle1 = Circle((200, 200, 100), 10) # (Цвет, стороны)
 cube1 = Cube((222, 35, 130), 6)
 
